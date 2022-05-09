@@ -44,6 +44,7 @@
 
 
 #define PIN_BUMPER PIN_A0
+#define PIN_INF PIN_A1
 
 
 // Rutina de gesti�n de pulsaciones serie
@@ -119,12 +120,14 @@ void main()
          while (!input(PULSADOR)) {} //Esperamos hasta que se pulse el pulsador 
          while (TRUE) {
          motores_palante();
-         while (input(PIN_BUMPER)) {}
+         while (input(PIN_BUMPER)) {
+            if (input(PIN_INF)) break
+         }
          motores_parar();
          motores_patras();
          delay_ms(1000);
          motores_paderecha();
-         delay_ms(3500);
+         delay_ms(6000);
          }
    }
    
