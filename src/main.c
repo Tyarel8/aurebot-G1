@@ -36,16 +36,18 @@
 #include <../lib/aurebot.h>
 #include <../lib/motores.h>
 #include <../lib/flex_lcd.c>
+
 /*#include <../lib/ldr.h>
 #include <../lib/cny70.h>
 #include <../lib/bumper.h>
 #include <../lib/sonido.h>
 #include <../lib/2leds.h>*/
 
+#define iniciox 0b1
+#define inicioy 0b1
 
 #define PIN_BUMPER PIN_A0
 #define PIN_INF PIN_A1
-
 
 // Rutina de gesti�n de pulsaciones serie
 void aure_serie()
@@ -99,6 +101,7 @@ void main()
 {
    int i, d, j, k;
    aure_configurar();
+   lcd_init();
    lcd_configurar();
    aure_configurar_usb_sinespera();
    
@@ -118,16 +121,22 @@ void main()
    } else {
       // Si no est� conectado   
          while (!input(PULSADOR)) {} //Esperamos hasta que se pulse el pulsador 
-         while (TRUE) {
+         for (i=0; i<2; i++) {
+         printf(lcd_putc,"Palante            ");
+         lcd_gotoxy(iniciox,inicioy);
          motores_palante();
          while (input(PIN_BUMPER)) {
-            if (input(PIN_INF)) break
+            // if (input(PIN_INF)) {
+            //    break;
+            // }
          }
+         printf(lcd_putc, "Obstaculo detectado");
+         lcd_gotoxy(iniciox,inicioy);
          motores_parar();
          motores_patras();
          delay_ms(1000);
          motores_paderecha();
-         delay_ms(6000);
+         delay_ms(5000);
          }
    }
    
