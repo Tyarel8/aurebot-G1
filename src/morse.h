@@ -10,364 +10,414 @@ void str_to_morse(char *str, char *morse) {
             {
                 case 'A':
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
                 case 'B':
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'C':
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'D':
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'E':
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'F':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'G':
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'H':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
                 case 'I':
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'J':
+                case 'J':
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'K':
+                case 'K':
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'L':
+                case 'L':
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'M':
+                case 'M':
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'N':
+                case 'N':
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'O':
+                case 'O':
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'P':
+                case 'P':
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'Q':
+                case 'Q':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'R':
+                case 'R':
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'S':
+                case 'S':
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case 'T':
-                morse[j]='-';
+                case 'T':
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'U':
+                case 'U':
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'V':
+                case 'V':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'W':
+                case 'W':
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'X':
+                case 'X':
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'y':
+                case 'y':
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case 'Z':
+                case 'Z':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '0':
+                case '0':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case '1':
+                case '1':
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case '2':
+                case '2':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case '3':
+                case '3':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case '4':
+                case '4':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case '5':
+                case '5':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '6':
+                case '6':
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '7':
+                case '7':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '8':
+                case '8':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '9':
+                case '9':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '.':
+                case '.':
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case ',':
+                case ',':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='-';
+                morse[j++]='-';
+                morse[j]='/';
                 break;
 
-            case ':':
+                case ':':
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='.';
+                morse[j++]='.';
+                morse[j]='/';
                 break;
 
-            case '?':
+                case '?':
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='-';
                 morse[j++]='.';
-                morse[j]='.';
-                break;
-
-
-            case '-':
-                morse[j++]='-';
                 morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j]='-';
-                break;
-
-            case ';':
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j]='.';
-                break;
-
-            case '"':
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j]='.';
-                break;
-
-            case '+':
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j]='.';
-                break;
-
-            case '/':
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j]='.';
-                break;
-
-            case '&':
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j]='.';
-                break;
-
-            case '$':
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j++]='-';
-                morse[j++]='.';
-                morse[j++]='.';
-                morse[j]='-';
+                morse[j]='/';
                 break;
 
 
-            case '@':
-                morse[j++]='.';
-                morse[j++]='-';
+                case '-':
                 morse[j++]='-';
                 morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='.';
                 morse[j++]='-';
-                morse[j]='.';
+                morse[j]='/';
                 break;
 
-            case '=':
+                case ';':
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j]='/';
+                break;
+
+                case '"':
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j]='/';
+                break;
+
+                case '+':
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j]='/';
+                break;
+
+                case '/':
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j]='/';
+                break;
+
+                case '&':
+                morse[j++]='.';
                 morse[j++]='-';
                 morse[j++]='.';
                 morse[j++]='.';
                 morse[j++]='.';
-                morse[j]='-';
+                morse[j]='/';
                 break;
 
-    case ' ':
+                case '$':
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j]='/';
+                break;
+
+
+                case '@':
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j]='/';
+                break;
+
+                case '=':
+                morse[j++]='-';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='.';
+                morse[j++]='-';
+                morse[j]='/';
+                break;
+
+                case ' ':
                 morse[j]=' ';
                 break;
             }
         j++;
     }
+    morse[j-3]='\0';
 }

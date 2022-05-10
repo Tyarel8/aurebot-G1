@@ -17,6 +17,8 @@
 #include <../lib/sonido.h>
 #include <../lib/2leds.h>*/
 
+#include "morse.h"
+
 // Inicio del display, usando la funcion lcd_gotoxy(iniciox,inicioy) se mueve el cursor al inicio
 #define iniciox 0b1
 #define inicioy 0b1
