@@ -149,28 +149,30 @@ void main()
          delay_ms(1000);
          motores_paderecha();
          delay_ms(5000);
+         motores_parar();
+
          char length_string[100];
-         sprintf(length_string, "AUREBOT ha recorrido %.2f metros", (float)ms_counter/100);
+         sprintf(length_string, "AUREBOT ha recorrido %.2f metros", (float)ms_counter/100); // Crear variable con el mensaje para traducir a morse
          char morse[150];
-         str_to_morse(length_string, morse);
+         str_to_morse(length_string, morse); // Funcion convierte un string en morse (hola mundo -> ..../---/.-../.-/ --/..-/-./-../---)
          printf(lcd_putc, "%s", length_string);
          lcd_gotoxy(iniciox,inicioy);
-         int unit = 100;
+         int unit = 100; // Unidad morse
          for (int p=0;p<strlen(morse);p++) {
-            if (morse[p] == '.') {
+            if (morse[p] == '.') { // Punto = 1 unidad
                output_toggle(PIN_LED);
                delay_ms(unit);
                output_toggle(PIN_LED);
-            } else if (morse[p] == '-') {
+            } else if (morse[p] == '-') { // Raya = 3 unidades
                output_toggle(PIN_LED);
                delay_ms(3*unit);
                output_toggle(PIN_LED);
-            } else if (morse[p] == '/') {
+            } else if (morse[p] == '/') { // Pausa entre letras = 3 unidades
                delay_ms(unit*2);
-            } else if (morse[p] == ' ') {
+            } else if (morse[p] == ' ') { // Pausa entre palabras = 7 unidades
                delay_ms(unit*4);
             }
-            delay_ms(unit);
+            delay_ms(unit); // Pausa entre puntos y rayas = 1 unidad
          }
          }
          motores_parar();
