@@ -68,14 +68,9 @@ void main() {
    lcd_configurar();
    aure_configurar_usb_sinespera();
    
-   for(int i=0; i<50; i++) {
-     delay_ms(100);
-     if(input(PULSADOR))i=100;
-   }
-   
    while (!input(PULSADOR)) { //Esperamos hasta que se pulse el pulsador o se active el mando
       if (!input(PIN_MANDO)) {
-         for (int z=0; z<5; z++) {
+         for (int z=0; z<5; z++) { // Si se enciende por el mando parpadea el LED
          output_high(PIN_LED);
          delay_ms(100);
          output_low(PIN_LED);
@@ -83,6 +78,7 @@ void main() {
          }
          break;
       }
+      delay_ms(10); // Sin el delay a veces se enciende solo como si se hubiera activado el mando
    }
 
    // ---------------- timer ----------------
