@@ -23,10 +23,14 @@
 #define iniciox 0b1
 #define inicioy 0b1
 
+// Velocidad del aurebot
+#define velocidad_aurebot 0.3
+
 // Pines para la lectura de los diferentes dispositivos
 #define PIN_BUMPER PIN_A0
 #define PIN_INF PIN_A1
 #define PIN_LED PIN_A3
+#define PIN_MANDO PIN_E2
 // --------------------------------------------------
 
 // * ---------------- timer ---------------- (no funciona)
@@ -69,7 +73,11 @@ void main() {
      if(input(PULSADOR))i=100;
    }
    
-   while (!input(PULSADOR)) {} //Esperamos hasta que se pulse el pulsador
+   while (!input(PULSADOR)) {//Esperamos hasta que se pulse el pulsador o se active el mando
+      if (!input(PIN_MANDO)) {
+         break;
+      }
+   }
 
    // ---------------- timer ----------------
    // set_tris_b(0x00);  //0b00000000 
@@ -81,14 +89,14 @@ void main() {
    // ---------------------------------------
    
    // int start = current_time();
+   int16 ms_counter = 0; // Inicializando el contador de tiempo con un entero de 16 bits
    // ! Cambiar bucle a 2 iteraciones cuando funcione el infrarrojo
    for (int t=0; t<1; t++) { // Bucle para detectar obstaculo 2 veces
       clear_lcd();
       printf(lcd_putc,"Palante");
       motores_palante();
-      int16 ms_counter = 0; // Inicializando el contador de tiempo con un entero de 16 bits
       while (input(PIN_BUMPER)) { // Lee el pin del bumper y del sensor infrarojo, y si detecta algo sigue el programa
-         // if (input(PIN_INF)) {
+         // if (!input(PIN_INF)) {
          //    break;
          // }
          // Aproximacion cutre de cuanto tiempo ha pasado asumiendo que lo que tarda en leer los pines es mucho menor de 10ms
@@ -97,7 +105,7 @@ void main() {
       }
       // int elapsed_time = current_time() - start;
       clear_lcd();
-      printf(lcd_putc,"Obstáculo", ms_counter);
+      printf(lcd_putc,"Obstaculo");
       lcd_gotoxy(iniciox, 2);
       printf(lcd_putc, "%fs", (float)ms_counter/100);
       motores_parar();
@@ -105,7 +113,7 @@ void main() {
       delay_ms(1000);
       motores_paderecha();
       // ! Falta ajustar tiempo de giro
-      delay_ms(5000); // Tiempo para hacer un giro de 180º
+      delay_ms(10000); // Tiempo para hacer un giro de 180º
       motores_parar();
    }
    motores_parar();
@@ -114,22 +122,22 @@ void main() {
    char final_message[100];
    char morse[150];
    // ! Falta calcular la velocidad y convertir el tiempo en distancia
-   sprintf(final_message, "AUREBOT ha recorrido %.2f metros", (float)ms_counter/100); // Crear variable con el mensaje para traducir a morse
+   sprintf(final_message, "AUREBOT ha recorrido %.2f metros", (float)ms_counter/100 * velocidad_aurebot); // Crear variable con el mensaje para traducir a morse
    str_to_morse(final_message, morse); // Funcion convierte un string en morse (hola mundo -> ..../---/.-../.-/ --/..-/-./-../---)
    clear_lcd();
-   printf(lcd_putc, "%.2f metros", (float)ms_counter/100));
-   int unit = 100; // Unidad morse en milisegundos
+   printf(lcd_putc, "%.2f metros", (float)ms_counter/100 * velocidad_aurebot);
+   int unit = 150; // Unidad morse en milisegundos
    for (int p=0;p<strlen(morse);p++) {
       // Bucle para traducir las rayas y puntos a encender y apagar un LED
       if (morse[p] == '.') { // Punto = 1 unidad
-         output_toggle(PIN_LED);
+         output_high(PIN_LED);
          delay_ms(unit);
-         output_toggle(PIN_LED);
+         output_low(PIN_LED);
       } 
       else if (morse[p] == '-') { // Raya = 3 unidades
-         output_toggle(PIN_LED);
+         output_high(PIN_LED);
          delay_ms(3*unit);
-         output_toggle(PIN_LED);
+         output_low(PIN_LED);
       } 
       else if (morse[p] == '/') { // Pausa entre letras = 3 unidades
          delay_ms(unit*2);
