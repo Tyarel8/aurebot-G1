@@ -23,14 +23,14 @@
 #define iniciox 0b1
 #define inicioy 0b1
 
-// Velocidad del aurebot
-#define velocidad_aurebot 0.3
+// Velocidad del aurebot de metros por segundo
+#define velocidad_aurebot 0.06289
 
 // Pines para la lectura de los diferentes dispositivos
 #define PIN_BUMPER PIN_A0
 #define PIN_INF PIN_A1
 #define PIN_LED PIN_A3
-#define PIN_MANDO PIN_E2
+#define PIN_MANDO PIN_E1
 // --------------------------------------------------
 
 // * ---------------- timer ---------------- (no funciona)
@@ -73,8 +73,14 @@ void main() {
      if(input(PULSADOR))i=100;
    }
    
-   while (!input(PULSADOR)) {//Esperamos hasta que se pulse el pulsador o se active el mando
+   while (!input(PULSADOR)) { //Esperamos hasta que se pulse el pulsador o se active el mando
       if (!input(PIN_MANDO)) {
+         for (int z=0; z<5; z++) {
+         output_high(PIN_LED);
+         delay_ms(100);
+         output_low(PIN_LED);
+         delay_ms(100);
+         }
          break;
       }
    }
@@ -112,8 +118,7 @@ void main() {
       motores_patras(); // Retroceder para no chocar al girar
       delay_ms(1000);
       motores_paderecha();
-      // ! Falta ajustar tiempo de giro
-      delay_ms(10000); // Tiempo para hacer un giro de 180º
+      delay_ms(6900); // Tiempo para hacer un giro de 180º
       motores_parar();
    }
    motores_parar();
@@ -121,7 +126,6 @@ void main() {
    // ---------------- Morse ----------------
    char final_message[100];
    char morse[150];
-   // ! Falta calcular la velocidad y convertir el tiempo en distancia
    sprintf(final_message, "AUREBOT ha recorrido %.2f metros", (float)ms_counter/100 * velocidad_aurebot); // Crear variable con el mensaje para traducir a morse
    str_to_morse(final_message, morse); // Funcion convierte un string en morse (hola mundo -> ..../---/.-../.-/ --/..-/-./-../---)
    clear_lcd();
