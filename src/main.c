@@ -10,6 +10,7 @@
 #include <../lib/aurebot.h>
 #include <../lib/motores.h>
 #include <../lib/flex_lcd.c>
+#include <string.h>
 
 /*#include <../lib/ldr.h>
 #include <../lib/cny70.h>
@@ -89,10 +90,17 @@ void main()
       clear_lcd();
       printf(lcd_putc, "Palante");
       motores_palante();
-      while (input(PIN_BUMPER))
+      char mensaje[11];
+      while (TRUE)
       { // Lee el pin del bumper y del sensor infrarojo, y si detecta algo sigue el programa
-         if (input(PIN_INF))
+         if (!input(PIN_INF))
          {
+            strcpy(mensaje, "Acaba mesa");
+            break;
+         }
+         if (!input(PIN_BUMPER))
+         {
+            strcpy(mensaje, "Obstaculo");
             break;
          }
          // Aproximacion cutre de cuanto tiempo ha pasado asumiendo que lo que tarda en leer los pines es mucho menor de 10ms
@@ -101,7 +109,7 @@ void main()
       }
       // int elapsed_time = current_time() - start;
       clear_lcd();
-      printf(lcd_putc, "Obstaculo");
+      printf(lcd_putc, "%s", mensaje);
       lcd_gotoxy(iniciox, 2);
       printf(lcd_putc, "%fs", (float)ms_counter / 100);
       motores_parar();
