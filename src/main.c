@@ -46,7 +46,7 @@ void clear_lcd()
 void buzz(int t, int f) // Hace funcionar el buzzer con el tiempo y la frecuencia como paramtros
 {
    float periodo2 = 1000 / (f * 2); // La mitad del periodo para hacer el delay
-   int32 counter = 0;
+   int16 counter = 0;
    while (counter < t)
    {
       output_high(PIN_BUZZER);
@@ -84,8 +84,7 @@ void main()
 
    // int start = current_time();
    int16 ms_counter = 0; // Inicializando el contador de tiempo con un entero de 16 bits
-   // ! Cambiar bucle a 2 iteraciones cuando funcione el infrarrojo
-   for (int t = 0; t < 1; t++)
+   for (int t = 0; t < 2; t++)
    { // Bucle para detectar obstaculo 2 veces
       clear_lcd();
       printf(lcd_putc, "Palante");
@@ -112,7 +111,6 @@ void main()
       delay_ms(6900); // Tiempo para hacer un giro de 180º
       motores_parar();
    }
-   motores_parar();
 
    // ---------------- Morse ----------------
    char final_message[100];
