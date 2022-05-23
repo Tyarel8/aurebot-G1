@@ -28,10 +28,9 @@
 
 // Pines para la lectura de los diferentes dispositivos
 #define PIN_BUMPER PIN_A0
-#define PIN_INF PIN_A4
+#define PIN_INF PIN_A5
 #define PIN_LED PIN_A3
 #define PIN_BUZZER PIN_A1
-
 #define PIN_MANDO PIN_E1
 // --------------------------------------------------
 
@@ -44,9 +43,9 @@ void clear_lcd()
    lcd_gotoxy(iniciox, inicioy);
 }
 
-void buzz(int t, int f)
+void buzz(int t, int f) // Hace funcionar el buzzer con el tiempo y la frecuencia como paramtros
 {
-   float periodo2 = 1000 / (f * 2);
+   float periodo2 = 1000 / (f * 2); // La mitad del periodo para hacer el delay
    int32 counter = 0;
    while (counter < t)
    {
@@ -93,9 +92,10 @@ void main()
       motores_palante();
       while (input(PIN_BUMPER))
       { // Lee el pin del bumper y del sensor infrarojo, y si detecta algo sigue el programa
-         // if (!input(PIN_INF)) {
-         //    break;
-         // }
+         if (input(PIN_INF))
+         {
+            break;
+         }
          // Aproximacion cutre de cuanto tiempo ha pasado asumiendo que lo que tarda en leer los pines es mucho menor de 10ms
          delay_ms(10);
          ms_counter++; // Añadimos 1 al contador, que se representa 10ms
